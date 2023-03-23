@@ -9,7 +9,34 @@ You can assume that the input only contains alphabetic characters.
 */
 
 const compress = str => {
+  let result = '';
+  let prev = '';
 
+  for (let char of str) {
+    if (prev === '' || prev[prev.length - 1] === char) {
+      prev += char;
+    } else {
+      if (prev.length === 1) {
+        result += prev;
+        prev = char;
+      } else {
+        result += prev.length + prev[prev.length - 1];
+        prev = char;
+      }
+    }
+  }
+
+  if (!prev.length) {
+    return result;
+  } else {
+    if (prev.length === 1) {
+      result += prev
+    } else {
+      result += prev.length + prev[prev.length - 1];
+    }
+
+    return result;
+  }
 }
 
 
