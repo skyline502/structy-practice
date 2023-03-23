@@ -1,6 +1,8 @@
 /*
 uncompress
-// Write a function, uncompress, that takes in a string as an argument. The input string will be formatted into multiple groups according to the followinconsole.log(g pattern:
+// Write a function, uncompress, that takes in a string as an argument.
+The input string will be formatted into multiple groups according to the
+following pattern:
 
 <number><char>
 
@@ -9,7 +11,20 @@ The function should return an uncompressed version of the string where each 'cha
 */
 
 const uncompress = str => {
+  const nums = '0123456789';
+  let result = '';
+  let multiple = '';
 
+  for (let char of str) {
+    if (nums.includes(char)) {
+      multiple += char;
+    } else {
+      result += char.repeat(multiple);
+      multiple = '';
+    }
+  }
+
+  return result;
 }
 
 
