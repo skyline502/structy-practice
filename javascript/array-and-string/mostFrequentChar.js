@@ -9,7 +9,29 @@ You can assume that the input string is non-empty.
 */
 
 const mostFrequentChar = str => {
+  const count = {};
 
+  for (char of str) {
+    if (!count[char]) {
+      count[char] = 1;
+    } else {
+      count[char]++;
+    }
+  }
+
+  // console.log(count, 'count')
+
+  let max = 0;
+  let letter;
+
+  for (n in count) {
+    if (count[n] > max) {
+      max = count[n]
+      letter = n;
+    }
+  }
+
+  return letter;
 }
 
 
