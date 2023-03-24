@@ -12,6 +12,10 @@ contain the same characters, but in any order.
 */
 
 const anagrams = (str1, str2) => {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
   const count = {};
 
   for (char of str1) {
