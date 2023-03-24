@@ -2,44 +2,73 @@
 
 anagrams
 
-Write a function, anagrams, that takes in 
-two strings as arguments. The function should 
-return a boolean indicating whether or not the 
-strings are anagrams. Anagrams are strings that 
+Write a function, anagrams, that takes in
+two strings as arguments. The function should
+return a boolean indicating whether or not the
+strings are anagrams. Anagrams are strings that
 contain the same characters, but in any order.
 
 
 */
+
+const anagrams = (str1, str2) => {
+  const count = {};
+
+  for (char of str1) {
+    if (char in count) {
+      count[char]++;
+    } else {
+      count[char] = 1;
+    }
+  }
+
+  for (char of str2) {
+    if (!char in count) {
+      return false;
+    }
+
+    count[char]--;
+  }
+
+  for (n in count) {
+    if (count[n] !== 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 //test_00:
 
-anagrams('restful', 'fluster'); // -> true
+console.log(anagrams('restful', 'fluster')); // -> true
 //test_01:
 
-anagrams('cats', 'tocs'); // -> false
+console.log(anagrams('cats', 'tocs')); // -> false
 //test_02:
 
-anagrams('monkeyswrite', 'newyorktimes'); // -> true
+console.log(anagrams('monkeyswrite', 'newyorktimes')); // -> true
 //test_03:
 
-anagrams('paper', 'reapa'); // -> false
+console.log(anagrams('paper', 'reapa')); // -> false
 //test_04:
 
-anagrams('elbow', 'below'); // -> true
+console.log(anagrams('elbow', 'below')); // -> true
 //test_05:
 
-anagrams('tax', 'taxi'); // -> false
+console.log(anagrams('tax', 'taxi')); // -> false
 //test_06:
 
-anagrams('taxi', 'tax'); // -> false
+console.log(anagrams('taxi', 'tax')); // -> false
 //test_07:
 
-anagrams('night', 'thing'); // -> true
+console.log(anagrams('night', 'thing')); // -> true
 //test_08:
 
-anagrams('abbc', 'aabc'); // -> false
+console.log(anagrams('abbc', 'aabc')); // -> false
 //test_09:
 
-anagrams('po', 'popp'); // -> false
+console.log(anagrams('po', 'popp')); // -> false
 //test_10:
 
-anagrams('pp', 'oo') // -> false
+console.log(anagrams('pp', 'oo')) // -> false
