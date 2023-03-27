@@ -10,7 +10,17 @@ There is guaranteed to be one such pair that sums to the target.
 */
 
 const pairSum = (arr, tar) => {
+  const complements = {};
 
+  for (let i = 0; i < arr.length; i++) {
+    let complement = tar - arr[i];
+    if (complement in complements) {
+      return [complements[complement], i]
+    }
+    complements[arr[i]] = i;
+  }
+
+  return complements;
 }
 
 // test_00:
