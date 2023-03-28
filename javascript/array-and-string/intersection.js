@@ -7,7 +7,16 @@ You may assume that each input array does not contain duplicate elements.
 */
 
 const intersection = (arr1, arr2) => {
+  const nums = new Set(arr1);
+  let result = [];
 
+  for (let num of arr2) {
+    if (nums.has(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
 };
 
 // test_00:
