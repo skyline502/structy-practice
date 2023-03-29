@@ -14,9 +14,9 @@ const fiveSort = nums => {
   let last = nums.length - 1;
 
   while (first < last) {
-    if (nums[last] === 5) {
+    if (nums[last] === 5) { //if last number is a 5, decrement index
       last--;
-    } else if (nums[first] === 5) {
+    } else if (nums[first] === 5) { //else if first num ===5 move to end;
       [nums[first], nums[last]] = [nums[last], nums[first]];
       first++;
     } else {
