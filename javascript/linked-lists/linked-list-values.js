@@ -13,6 +13,22 @@ const linkedListValues = head => {
   if (!head) {
     return [];
   }
+
+  let results = [];
+
+  while (head) {
+    results.push(head.val);
+    head = head.next;
+  }
+
+  return results;
+}
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
 }
 
 
