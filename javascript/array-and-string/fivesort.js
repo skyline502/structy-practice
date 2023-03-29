@@ -10,7 +10,21 @@ as long as all 5s are at the end of the array.
 */
 
 const fiveSort = nums => {
+  let first = 0;
+  let last = nums.length - 1;
 
+  while (first < last) {
+    if (nums[last] === 5) {
+      last--;
+    } else if (nums[first] === 5) {
+      [nums[first], nums[last]] = [nums[last], nums[first]];
+      first++;
+    } else {
+      first++;
+    }
+  }
+
+  return nums;
 }
 
 // test_00
