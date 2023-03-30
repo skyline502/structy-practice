@@ -8,8 +8,10 @@ boolean indicating whether or not the linked list contains the target.
 
 */
 
-const linkedListFind = head => {
-
+const linkedListFind = (head, tar) => {
+  if (head === null) return false;
+  if (head.val === tar) return true;
+  return linkedListFind(head.next, tar);
 }
 
 class Node {
@@ -51,7 +53,7 @@ c.next = d;
 
 console.log(linkedListFind(a, "q")); // false
 // test_03:
-const node1 = new Node("jason");
+let node1 = new Node("jason");
 const node2 = new Node("leneli");
 
 node1.next = node2;
@@ -60,13 +62,13 @@ node1.next = node2;
 
 console.log(linkedListFind(node1, "jason")); // true
 // test_04:
-const node1 = new Node(42);
+node1 = new Node(42);
 
 // 42
 
 console.log(linkedListFind(node1, 42)); // true
 // test_05:
-const node1 = new Node(42);
+// const node2 = new Node(42);
 
 // 42
 
