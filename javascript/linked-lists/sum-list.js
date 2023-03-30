@@ -3,11 +3,11 @@
 
 
 sum list
-Write a function, sumList, 
-that takes in the head of a 
-linked list containing numbers 
-as an argument. The function 
-should return the total sum of 
+Write a function, sumList,
+that takes in the head of a
+linked list containing numbers
+as an argument. The function
+should return the total sum of
 all values in the linked list.
 */
 
@@ -47,7 +47,7 @@ d.next = e;
 
 // 2 -> 8 -> 3 -> -1 -> 7
 
-sumList(a); // 19
+console.log(sumList(a)); // 19
 
 //test_01:
 
@@ -58,7 +58,7 @@ x.next = y;
 
 // 38 -> 4
 
-sumList(x); // 42
+console.log(sumList(x)); // 42
 
 //test_02:
 
@@ -66,8 +66,8 @@ const z = new Node(100);
 
 // 100
 
-sumList(z); // 100
+console.log(sumList(z)); // 100
 
 //test_03:
 
-sumList(null); // 0
+console.log(sumList(null)); // 0
