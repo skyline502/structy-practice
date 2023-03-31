@@ -10,7 +10,24 @@ If there is no node at the given index, then return null.
 */
 
 const getNodeValue = (head, idx) => {
+  let i = 0;
 
+  while(head) {
+    if (i === idx) {
+      return head.val;
+    }
+    head = head.next;
+    i++;
+  }
+
+  return null;
+}
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
 }
 
 // test_00:
