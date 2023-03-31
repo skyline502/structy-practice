@@ -16,8 +16,34 @@ class Node {
   }
 }
 
-const reverseList = (head) {
+const linkedListValues = head => {
+  if (!head) {
+    return [];
+  }
 
+  let results = [];
+
+  while (head) {
+    results.push(head.val);
+    head = head.next;
+  }
+
+  return results;
+}
+
+const reverseList = (head) => {
+  let prev = null;
+
+  while (head) {
+    let next = head.next;
+    head.next = prev;
+    prev = head;
+    head = next;
+  }
+
+  let nodes = linkedListValues(prev);
+  console.log(nodes, 'nodes....')
+  return prev;
 }
 
 // test_00:
