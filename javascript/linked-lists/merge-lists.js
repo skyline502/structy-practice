@@ -18,9 +18,37 @@ class Node {
   }
 }
 
-const mergeLists = (h1, h2) {
+const mergeLists = (h1, h2) => {
+  let head;
   let current;
   let next;
+
+  if (h1.val > h2.val) {
+    next = h1;
+    current = h2;
+    head = h2;
+  } else {
+    next = h2;
+    current = h1;
+    head = h1
+  }
+
+  while (current) {
+    let tempNext = current.next;
+    if (tempNext < next) {
+      current = tempNext;
+    } else {
+      current = next;
+      next = tempNext;
+    }
+  }
+
+  if (next) {
+    current.next
+  }
+
+  let results = linkedListValues(head);
+  return results;
 }
 
 const linkedListValues = head => {
@@ -42,7 +70,32 @@ const linkedListValues = head => {
 
 
 
-// test_00:
+// // test_00:
+// const a = new Node(5);
+// const b = new Node(7);
+// const c = new Node(10);
+// const d = new Node(12);
+// const e = new Node(20);
+// const f = new Node(28);
+// a.next = b;
+// b.next = c;
+// c.next = d;
+// d.next = e;
+// e.next = f;
+// 5 -> 7 -> 10 -> 12 -> 20 -> 28
+
+// const q = new Node(6);
+// const r = new Node(8);
+// const s = new Node(9);
+// const t = new Node(25);
+// q.next = r;
+// r.next = s;
+// s.next = t;
+// 6 -> 8 -> 9 -> 25
+
+// console.log(mergeLists(a, q));
+// 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28
+// test_01:
 const a = new Node(5);
 const b = new Node(7);
 const c = new Node(10);
@@ -56,41 +109,16 @@ d.next = e;
 e.next = f;
 // 5 -> 7 -> 10 -> 12 -> 20 -> 28
 
-const q = new Node(6);
+const q = new Node(1);
 const r = new Node(8);
 const s = new Node(9);
-const t = new Node(25);
+const t = new Node(10);
 q.next = r;
 r.next = s;
 s.next = t;
-// 6 -> 8 -> 9 -> 25
+// 1 -> 8 -> 9 -> 10
 
 console.log(mergeLists(a, q));
-// 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28
-// // test_01:
-// // const a = new Node(5);
-// // const b = new Node(7);
-// // const c = new Node(10);
-// // const d = new Node(12);
-// // const e = new Node(20);
-// // const f = new Node(28);
-// a.next = b;
-// b.next = c;
-// c.next = d;
-// d.next = e;
-// e.next = f;
-// // 5 -> 7 -> 10 -> 12 -> 20 -> 28
-
-// const q = new Node(1);
-// const r = new Node(8);
-// const s = new Node(9);
-// const t = new Node(10);
-// q.next = r;
-// r.next = s;
-// s.next = t;
-// // 1 -> 8 -> 9 -> 10
-
-// mergeLists(a, q);
 // // 1 -> 5 -> 7 -> 8 -> 9 -> 10 -> 10 -> 12 -> 20 -> 28
 // // test_02:
 // const h = new Node(30);
