@@ -26,17 +26,19 @@ const zipperLists = (h1, h2) => {
   let next = h2;
 
   while (current) {
-    let tempNext = current.next;
+    let temp = current.next;
     if (next) {
       current.next = next;
     } else {
       break;
     }
+
     current = next;
-    next = tempNext;
+    next = temp;
   }
-  return head1;
+  return h1;
 }
+
 
 // test_00:
 const a = new Node("a");
