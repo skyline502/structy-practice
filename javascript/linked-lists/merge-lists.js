@@ -20,18 +20,18 @@ class Node {
 
 const mergeLists = (head1, head2) => {
   let h1 = head1;
-  let h2= head2;
-  let start;
+  let h2 = head2;
+  let head;
 
   if (h1.val < h2.val) {
-    start = h1;
-    h1 = head1.next;
+    head = h1;
+    h1 = h1.next;
   } else {
-    start = h2;
-    h2 = head2.next;
+    head = h2;
+    h2 = h2.next;
   }
 
-  let current = start;
+  let current = head;
   while (h1 !== null && h2 !== null) {
     if (h1.val < h2.val) {
       current.next = h1;
@@ -49,7 +49,7 @@ const mergeLists = (head1, head2) => {
     current.next = h1;
   }
 
-  let results = linkedListValues(start);
+  let results = linkedListValues(head);
   return results;
 }
 
