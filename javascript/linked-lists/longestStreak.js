@@ -16,7 +16,27 @@ class Node {
 }
 
 const longestStreak = head => {
+  if (!head) return 0;
+  let longest = 0;
+  let streak = 0;
+  let prev = head.val;
 
+  while (head) {
+    if (head.val === prev) {
+      streak++;
+
+      if (streak > longest) {
+        longest = streak;
+      }
+    } else {
+      streak = 1;
+      prev = head.val;
+    }
+
+    head = head.next;
+  }
+
+  return longest;
 }
 
 
