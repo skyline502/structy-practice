@@ -1,7 +1,10 @@
 /*
 
 remove node
-Write a function, removeNode, that takes in the head of a linked list and a target value as arguments. The function should delete the node containing the target value from the linked list and return the head of the resulting linked list. If the target appears multiple times in the linked list, only remove the first instance of the target in the list.
+Write a function, removeNode, that takes in the head of a linked list and a target value as arguments.
+The function should delete the node containing the target value from the linked list and return the head
+of the resulting linked list. If the target appears multiple times in the linked list, only remove the
+first instance of the target in the list.
 
 Do this in-place.
 
@@ -18,8 +21,36 @@ class Node {
   }
 }
 
-const removeNode = (head, tar) => {
+const linkedListValues = head => {
+  if (!head) {
+    return [];
+  }
 
+  let results = [];
+
+  while (head) {
+    results.push(head.val);
+    head = head.next;
+  }
+
+  return results;
+}
+
+const removeNode = (head, tar) => {
+  if (head.val === tar) {
+    return linkedListValues(head.next);
+  }
+  let prev = head;
+  let start = head;
+
+  while (head) {
+    if (head.val === tar) {
+      prev.next = head.next;
+      return linkedListValues(start);
+    }
+    prev = head;
+    head = head.next;
+  }
 }
 
 // test_00:
