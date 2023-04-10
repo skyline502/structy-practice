@@ -21,8 +21,41 @@ class Node {
   }
 }
 
-const insertNode = (head, val, idx) => {
+const linkedListValues = head => {
+  if (!head) {
+    return [];
+  }
 
+  let results = [];
+
+  while (head) {
+    results.push(head.val);
+    head = head.next;
+  }
+
+  return results;
+}
+
+const insertNode = (head, val, idx) => {
+  let i = 0;
+  let newNode = new Node(val);
+  let start = head;
+
+  if (idx === 0) {
+    newNode.next = head;
+    return linkedListValues(newNode);
+  }
+
+  while (head) {
+    let next = head.next;
+    if (idx === i + 1) {
+      head.next = newNode;
+      newNode.next = next;
+      return linkedListValues(start);
+    }
+    head = head.next;
+    i++;
+  }
 }
 
 // test_00:
