@@ -1,11 +1,15 @@
 /*
 
 add lists
-Write a function, addLists, that takes in the head of two linked lists, each representing a number.
-The nodes of the linked lists contain digits as values. The nodes in the input lists are reversed;
-this means that the least significant digit of the number is the head. The function should return
-the head of a new linked listed representing the sum of the input lists. The output list should
-have its digits reversed as well.
+Write a function, addLists, that takes in the head of two linked lists, each representing a
+number.
+
+The nodes of the linked lists contain digits as values. The nodes in the input lists are
+reversed;
+
+This means that the least significant digit of the number is the head. The function should
+return the head of a new linked listed representing the sum of the input lists. The output list
+should have its digits reversed as well.
 
 // Say we wanted to compute 621 + 354 normally. The sum is 975:
 
@@ -23,6 +27,21 @@ have its digits reversed as well.
 
 */
 
+const linkedListValues = head => {
+  if (!head) {
+    return [];
+  }
+
+  let results = [];
+
+  while (head) {
+    results.push(head.val);
+    head = head.next;
+  }
+
+  return results;
+}
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -31,7 +50,30 @@ class Node {
 }
 
 const addLists = (h1, h2) => {
+  let h1values = [];
+  let h2values = [];
 
+  while (h1) {
+    h1values.push(h1.val);
+    h1 = h1.next;
+  }
+  while(h2) {
+    h2values.push(h2.val);
+    h2 = h2.next;
+  }
+
+  let head = new Node(h1values[0] + h2values[0]);
+  let current = head;
+  console.log(head.val);
+
+  for (let i = 1; i < h1values.length; i++) {
+    let node = new Node(h1values[i] + h2values[i]);
+    console.log(node.val);
+    current.next = node;
+    current = current.next;
+  }
+
+  return linkedListValues(head);
 }
 
 
