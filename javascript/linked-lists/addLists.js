@@ -54,24 +54,27 @@ const addLists = (h1, h2) => {
   let h2values = [];
 
   while (h1) {
-    h1values.push(h1.val);
+    h1values.push(h1.val).toString();
     h1 = h1.next;
   }
   while(h2) {
-    h2values.push(h2.val);
+    h2values.push(h2.val).toString();
     h2 = h2.next;
   }
 
-  let head = new Node(h1values[0] + h2values[0]);
-  let current = head;
-  console.log(head.val);
+  let sum = Number(h1values.reverse().join(''))+Number(h2values.reverse().join(''));
+  sum = sum.toString().split('').reverse();
+  // console.log(sum)
 
-  for (let i = 1; i < h1values.length; i++) {
-    let node = new Node(h1values[i] + h2values[i]);
-    console.log(node.val);
+  let head = new Node(sum[0]);
+  let current = head;
+
+  for (let i = 1; i < sum.length; i++) {
+    let node = new Node(sum[i]);
     current.next = node;
     current = current.next;
   }
+
 
   return linkedListValues(head);
 }
