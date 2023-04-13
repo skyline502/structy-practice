@@ -20,7 +20,27 @@ class Node {
 }
 
 const depthFirstValues = root => {
+  let stack = [root];
+  let values = [];
 
+  if (!root) {
+    return values;
+  }
+
+  while (stack.length) {
+    let current = stack.pop();
+    // console.log(current, 'current')
+    if (current.right) {
+      stack.push(current.right);
+    }
+    if (current.left) {
+      stack.push(current.left);
+    }
+
+    values.push(current.val);
+  }
+
+  return values;
 }
 
 
@@ -44,7 +64,7 @@ c.right = f;
 //  / \     \
 // d   e     f
 
-depthFirstValues(a);
+console.log(depthFirstValues(a));
 //    -> ['a', 'b', 'd', 'e', 'c', 'f']
 // test_01:
 // const a = new Node('a');
@@ -70,12 +90,12 @@ e.left = g;
 //    /
 //   g
 
-depthFirstValues(a);
+console.log(depthFirstValues(a));
 //    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 // test_02:
-const a = new Node('a');
+// const a = new Node('a');
 //      a
-depthFirstValues(a);
+console.log(depthFirstValues(a));
 //    -> ['a']
 // test_03:
 // const a = new Node('a');
@@ -99,8 +119,8 @@ d.right = e;
 //         \
 //          e
 
-depthFirstValues(a);
+console.log(depthFirstValues(a));
 //    -> ['a', 'b', 'c', 'd', 'e']
 // test_04:
-depthFirstValues(null);
+console.log(depthFirstValues(null));
 //    -> []
