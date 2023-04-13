@@ -23,9 +23,21 @@ const breadthFirstValues = root => {
   let queue = [root];
   let values = [];
 
-  while (root.length) {
+  while (queue.length) {
+    let current = queue.shift();
+    // console.log(current)
+    values.push(current.val);
 
+    if (current.left) {
+      queue.push(current.left);
+    }
+
+    if (current.right) {
+      queue.push(current.right);
+    }
   }
+
+  return values;
 }
 
 
