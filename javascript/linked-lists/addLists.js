@@ -63,8 +63,8 @@ const addLists = (h1, h2) => {
   }
 
   let sum = Number(h1values.reverse().join(''))+Number(h2values.reverse().join(''));
+  console.log(sum)
   sum = sum.toString().split('').reverse();
-  // console.log(sum)
 
   let head = new Node(sum[0]);
   let current = head;
