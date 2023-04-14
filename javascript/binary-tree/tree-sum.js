@@ -15,7 +15,26 @@ class Node {
 }
 
 const treeSum = root => {
+  let sum = 0;
 
+  if (!root) return 0;
+
+  const stack = [root];
+
+  while (stack.length) {
+    const current = stack.pop();
+    sum += current.val;
+
+    if (current.left) {
+      stack.push(current.left);
+    }
+
+    if (current.right) {
+      stack.push(current.right);
+    }
+  }
+
+  return sum;
 }
 
 // test_00:
