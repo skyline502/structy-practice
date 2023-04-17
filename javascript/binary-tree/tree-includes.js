@@ -15,8 +15,24 @@ class Node {
   }
 }
 
-const treeIncludes = root => {
+const treeIncludes = (root, tar) => {
+  if (!root)return false;
+  let queue = [root];
 
+  while (queue.length) {
+    let current = queue.shift();
+    if (current.val === tar) {
+      return true;
+    }
+    if (current.left) {
+      queue.push(current.left);
+    }
+    if (current.right) {
+      queue.push(current.right);
+    }
+  }
+
+  return false;
 }
 
 
