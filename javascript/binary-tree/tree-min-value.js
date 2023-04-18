@@ -18,7 +18,24 @@ class Node {
 }
 
 const treeMinValue = root => {
+  let min = Infinity;
+  let queue = [root];
 
+  while (queue.length) {
+    const current = queue.shift();
+    if (current.val < min) {
+      min = current.val;
+    }
+
+    if (current.left) {
+      queue.push(current.left);
+    }
+    if (current.right) {
+      queue.push(current.right);
+    }
+  }
+
+  return min;
 }
 
 // test_00:
