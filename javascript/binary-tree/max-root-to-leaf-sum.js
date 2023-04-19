@@ -1,9 +1,8 @@
 /*
 
-tree min value
-Write a function, treeMinValue, that takes in the root of a binary
-tree that contains number values. The function should return the
-minimum value within the tree.
+max root to leaf path sum
+Write a function, maxPathSum, that takes in the root of a binary tree that contains number values.
+The function should return the maximum sum of any root to leaf path within the tree.
 
 You may assume that the input tree is non-empty.
 
@@ -17,25 +16,8 @@ class Node {
   }
 }
 
-const treeMinValue = root => {
-  let min = 0;
-  let queue = [root];
+const maxPathSum = root => {
 
-  while (queue.length) {
-    const current = queue.shift();
-    if (current.val < min) {
-      min = current.val;
-    }
-
-    if (current.left) {
-      queue.push(current.left);
-    }
-    if (current.right) {
-      queue.push(current.right);
-    }
-  }
-
-  return min;
 }
 
 // test_00:
@@ -58,36 +40,40 @@ c.right = f;
 //  / \      \
 // 4   -2     1
 
-console.log(treeMinValue(a)); // -> -2
-// test_01:
+console.log(maxPathSum(a)); // -> 18
+// // test_01:
 // const a = new Node(5);
 // const b = new Node(11);
-// const c = new Node(3);
-// const d = new Node(4);
-// const e = new Node(14);
-// const f = new Node(12);
+// const c = new Node(54);
+// const d = new Node(20);
+// const e = new Node(15);
+// const f = new Node(1);
+// const g = new Node(3);
 
 // a.left = b;
 // a.right = c;
 // b.left = d;
 // b.right = e;
-// c.right = f;
+// e.left = f;
+// e.right = g;
 
-// //       5
-// //    /    \
-// //   11     3
-// //  / \      \
-// // 4   14     12
+// //        5
+// //     /    \
+// //    11    54
+// //  /   \
+// // 20   15
+// //      / \
+// //     1  3
 
-// console.log(treeMinValue(a)); // -> 3
+// maxPathSum(a); // -> 59
 // // test_02:
 // const a = new Node(-1);
 // const b = new Node(-6);
 // const c = new Node(-5);
 // const d = new Node(-3);
-// const e = new Node(-4);
+// const e = new Node(0);
 // const f = new Node(-13);
-// const g = new Node(-2);
+// const g = new Node(-1);
 // const h = new Node(-2);
 
 // a.left = b;
@@ -102,14 +88,14 @@ console.log(treeMinValue(a)); // -> -2
 // //      /   \
 // //    -6    -5
 // //   /  \     \
-// // -3   -4   -13
+// // -3   0    -13
 // //     /       \
-// //    -2       -2
+// //    -1       -2
 
-// console.log(treeMinValue(a)); // -> -13
+// maxPathSum(a); // -> -8
 // // test_03:
 // const a = new Node(42);
 
 // //        42
 
-// console.log(treeMinValue(a)); // -> 42
+// maxPathSum(a); // -> 42
