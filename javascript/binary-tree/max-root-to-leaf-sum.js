@@ -17,9 +17,9 @@ class Node {
 }
 
 const maxPathSum = root => {
-  if (!root) return -Infinity;
-  if (!root.left && !root.right) return root.val;
-  let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right))
+  if (!root) return -Infinity; //so when we plug  it into our Math.max, we don't return it
+  if (!root.left && !root.right) return root.val; //if it is a leaf we return its value
+  let maxChild = Math.max(maxPathSum(root.left), maxPathSum(root.right)) //get the max
   return root.val + maxChild;
 }
 
