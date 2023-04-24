@@ -30,19 +30,19 @@ const pathFinder = (root, tar) => {
 
 const findVal = (root, tar) => {
   if (!root) return null;
-  if (root.val === tar) return [root.val];
-  let left = findVal(root.left, tar);
+  if (root.val === tar) return [root.val]; //we return an array when we find the target;
+  let left = findVal(root.left, tar); //else we continue down the nodes in search of it
   let right = findVal(root.right, tar);
 
-  if (left) {
+  if (left) { //if it is found on the left node, we push the root val into our array
     left.push(root.val);
     return left;
   }
-  if (right) {
+  if (right) { //if it is on the right, we do the same;
     right.push(root.val);
     return right;
   }
-  return null;
+  return null; //finally if the tar is not found we return null;
 }
 
 
