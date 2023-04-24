@@ -18,8 +18,31 @@ class Node {
   }
 }
 
-const pathFinder = root => {
+const pathFinder = (root, tar) => {
+  let results = findVal(root, tar);
 
+  if (!results) {
+    return null;
+  } else {
+    return results.reverse();
+  }
+}
+
+const findVal = (root, tar) => {
+  if (!root) return null;
+  if (root.val === tar) return [root.val];
+  let left = findVal(root.left, tar);
+  let right = findVal(root.right, tar);
+
+  if (left) {
+    left.push(root.val);
+    return left;
+  }
+  if (right) {
+    right.push(root.val);
+    return right;
+  }
+  return null;
 }
 
 
