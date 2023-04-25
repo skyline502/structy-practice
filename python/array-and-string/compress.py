@@ -11,7 +11,26 @@
 
 
 def compress(s):
-  print(s)
+  result = ''
+  prev = ''
+
+  for char in s:
+    if prev == '' or prev[len(prev) - 1] == char:
+      prev += char
+    else:
+      if len(prev) == 1:
+        result += prev[len(prev)- 1]
+        prev = char
+      else:
+        result += str(len(prev)) + prev[len(prev) - 1]
+        prev = char
+
+  if len(prev) == 1:
+    result += prev[0]
+  else:
+    result += str(len(prev)) + prev[0]
+
+  return result
 
 
 # Examples
