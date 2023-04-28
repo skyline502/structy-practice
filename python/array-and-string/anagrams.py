@@ -8,6 +8,8 @@
 # contain the same characters, but in any oprintt_00:
 
 def anagrams(s1, s2):
+  if len(s1) != len(s2):
+    return False
   count = {}
 
   for char in s1:
