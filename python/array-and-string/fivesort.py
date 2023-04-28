@@ -9,14 +9,18 @@
 # as long as all 5s are at the end of the array.
 
 def fiveSort(a):
+  # two indexes, start and end
   i = 0
   j = len(a) - 1
 
   while i < j:
+    # if the end is already a 5 decrement
     if a[j] == 5:
       j -= 1
+    # if start is a 5 we swap
     elif a[i] == 5:
       a[i], a[j] = a[j], a[i]
+    # both start and end is not a 5
     else:
       i += 1
 
