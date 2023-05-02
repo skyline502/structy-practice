@@ -13,7 +13,27 @@ class Node {
 }
 
 const treeValueCount = (root, tar) =>  {
+  if (!root) return 0;
+  let count = 0;
 
+  let stack = [root];
+
+  while (stack.length) {
+    let current = stack.pop();
+    if (current.val === tar) {
+      count++;
+    }
+
+    if (current.right) {
+      stack.push(current.right);
+    }
+
+    if (current.left) {
+      stack.push(current.left);
+    }
+  }
+
+  return count;
 }
 
 //Examples:
@@ -36,7 +56,7 @@ c.right = f;
 //  / \     \
 // 4   6     12
 
-// treeValueCount(a,  6); // -> 3
+console.log(treeValueCount(a,  6)); // -> 3
 
 // const a = new Node(12);
 // const b = new Node(6);
@@ -112,4 +132,4 @@ c.right = f;
 
 // treeValueCount(a, 9); // -> 0
 
-treeValueCount(null, 42); // -> 0
+console.log(treeValueCount(null, 42)); // -> 0
