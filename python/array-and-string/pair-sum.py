@@ -9,10 +9,15 @@
 
 
 def pairSum(list, tar):
-  result = []
+  # hash to store indices of previous numbers
   nums = {}
 
-  for num in list:
+  for (i, num) in enumerate(list):
+    complement = tar - num
+    if complement in nums:
+      return [nums[complement], i]
+    nums[num] = i
+
 
 
 
