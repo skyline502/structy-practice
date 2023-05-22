@@ -1,14 +1,28 @@
 # pair product
-# Write a function, pairProduct, that takes in an array and a target product as arguments.
-# The function should return an array containing a pair of indices whose elements multiply
-# to the given target. The indices returned must be unique.
 
-# Be sure to return the indices, not the elements themselves.
+# Write a function, pairProduct, that takes in an array
+# and a target product as arguments.  The function should
+# return an array containing a pair of indices whose
+# elements multiply to the given target. The indices
+# returned must be unique.
 
-# There is guaranteed to be one such pair whose product is the target.
+# Be sure to return the indices, not the elements
+# themselves.
+
+# There is guaranteed to be one such pair whose product
+# is the target.
 
 def pairProduct(list, tar):
-    print(list, tar)
+  nums = {}
+
+  for (idx, num) in enumerate(list):
+    complement = tar / num
+    # print(complement)
+
+    if complement in nums:
+      return [nums[complement], idx]
+
+    nums[num] = idx
 
 
 # Examples:
