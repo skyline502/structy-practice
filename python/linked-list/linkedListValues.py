@@ -5,12 +5,26 @@
 # should return an array containing all values of the
 # nodes in the linked list.
 
+class Node:
+    def __init__(self, val):
+      self.val = val
+      self.next = None
+
+def linkedListValues(head):
+   result = []
+
+   while head:
+      result.append(head.val)
+      head = head.next
+
+   return result
+
 # Examples:
 
-a = new Node("a");
-b = new Node("b");
-c = new Node("c");
-d = new Node("d");
+a = Node("a");
+b = Node("b");
+c = Node("c");
+d = Node("d");
 
 a.next = b;
 b.next = c;
@@ -19,17 +33,17 @@ c.next = d;
 #a -> b -> c -> d
 
 print(linkedListValues(a)); #-> [ 'a', 'b', 'c', 'd' ]
-x = new Node("x");
-y = new Node("y");
+x = Node("x");
+y = Node("y");
 
 x.next = y;
 
 #x -> y
 
 print(linkedListValues(x)); #-> [ 'x', 'y' ]
-q = new Node("q");
+q = Node("q");
 
 #q
 
 print(linkedListValues(q)); #-> [ 'q' ]
-print(linkedListValues(null)); #-> [ ]
+print(linkedListValues(None)); #-> [ ]
