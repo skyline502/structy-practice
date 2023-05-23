@@ -42,7 +42,21 @@ def addLists(h1, h2):
         h2 = h2.next
 
     result = (str(int("".join(h1nums)) + int("".join(h2nums))))
-    return result
+
+    head = None
+    current = None
+    for char in result:
+        c = Node(int(char))
+        if head == None:
+            head = c
+            current = c
+        current.next = c
+        current = c
+
+    return head.next.next.val
+
+
+
 # Examples:
 
 a1 = Node(1);
@@ -61,6 +75,8 @@ b2.next = b3;
 
 print(addLists(a1, b1));
 # 5 -> 7 -> 9
+
+
 # test_01:
 #  7541
 # +  32
