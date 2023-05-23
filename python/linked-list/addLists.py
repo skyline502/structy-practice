@@ -30,8 +30,19 @@ class Node:
         self.next = None
 
 def addLists(h1, h2):
-    print(h1.val, h2.val)
+    h1nums = []
+    h2nums = []
 
+    while (h1):
+        h1nums.append(str(h1.val))
+        h1 = h1.next
+
+    while (h2):
+        h2nums.append(str(h2.val))
+        h2 = h2.next
+
+    result = (str(int("".join(h1nums)) + int("".join(h2nums))))
+    return result
 # Examples:
 
 a1 = Node(1);
