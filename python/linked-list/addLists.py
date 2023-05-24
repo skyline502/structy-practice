@@ -29,6 +29,17 @@ class Node:
         self.val = val
         self.next = None
 
+
+def linkedListValues(head):
+   result = []
+
+   while head:
+      result.append(head.val)
+      head = head.next
+
+   return result
+
+
 def addLists(h1, h2):
     h1nums = []
     h2nums = []
@@ -41,11 +52,19 @@ def addLists(h1, h2):
         h2nums.append(str(h2.val))
         h2 = h2.next
 
+    print(h1nums, h2nums, 'before')
+    h1nums.reverse()
+    h2nums.reverse()
+    print(h1nums, h2nums, 'after')
+
+
     result = (str(int("".join(h1nums)) + int("".join(h2nums))))
+
+    res = result[::-1]
 
     head = None
     current = None
-    for char in result:
+    for char in res:
         c = Node(int(char))
         if head == None:
             head = c
@@ -53,27 +72,28 @@ def addLists(h1, h2):
         current.next = c
         current = c
 
-    return head.next.next.val
+    return linkedListValues(head)
+
 
 
 
 # Examples:
 
-a1 = Node(1);
-a2 = Node(2);
-a3 = Node(6);
-a1.next = a2;
-a2.next = a3;
-# 1 -> 2 -> 6
+# a1 = Node(1);
+# a2 = Node(2);
+# a3 = Node(6);
+# a1.next = a2;
+# a2.next = a3;
+# # 1 -> 2 -> 6
 
-b1 = Node(4);
-b2 = Node(5);
-b3 = Node(3);
-b1.next = b2;
-b2.next = b3;
-# 4 -> 5 -> 3
+# b1 = Node(4);
+# b2 = Node(5);
+# b3 = Node(3);
+# b1.next = b2;
+# b2.next = b3;
+# # 4 -> 5 -> 3
 
-print(addLists(a1, b1));
+# print(addLists(a1, b1));
 # 5 -> 7 -> 9
 
 
@@ -83,22 +103,23 @@ print(addLists(a1, b1));
 # -----
 #  7573
 
-# a1 = Node(1);
-# a2 = Node(4);
-# a3 = Node(5);
-# a4 = Node(7);
-# a1.next = a2;
-# a2.next = a3;
-# a3.next = a4;
+a1 = Node(1);
+a2 = Node(4);
+a3 = Node(5);
+a4 = Node(7);
+a1.next = a2;
+a2.next = a3;
+a3.next = a4;
 # # 1 -> 4 -> 5 -> 7
 
-# b1 = Node(2);
-# b2 = Node(3);
-# b1.next = b2;
+b1 = Node(2);
+b2 = Node(3);
+b1.next = b2;
 # # 2 -> 3
 
-# addLists(a1, b1);
+print(addLists(a1, b1))
 # # 3 -> 7 -> 5 -> 7
+
 # # test_02:
 # #   39
 # # + 47
