@@ -17,6 +17,12 @@ class Node:
     self.val = val
     self.next = None
 
+
+def insertNode(head, val, idx):
+  n = Node(val)
+
+
+
 # Examples:
 
 # test_00:
