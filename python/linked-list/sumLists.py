@@ -13,7 +13,13 @@ class Node:
     self.next = None
 
 def sumList(head):
-  print(head)
+  sum = 0
+
+  while head:
+    sum += head.val
+    head = head.next
+
+  return sum
 
 # Examples:
 
