@@ -18,8 +18,38 @@ class Node:
     self.next = None
 
 
+def linkedListValues(head):
+   result = []
+
+   while head:
+      result.append(head.val)
+      head = head.next
+
+   return result
+
+
+
 def insertNode(head, val, idx):
   n = Node(val)
+  if idx == 0:
+    n.next = head
+    return linkedListValues(n)
+
+  start = head
+  i = 0
+
+
+  while head:
+    if i + 1 == idx:
+      pnext = head.next
+      head.next = n
+      n.next = pnext
+      return linkedListValues(start)
+
+    head = head.next
+    i += 1
+
+
 
 
 
@@ -67,6 +97,8 @@ c.next = d
 
 print(insertNode(a, 'm', 4))
 # a -> b -> c -> d -> m
+
+
 # test_03:
 # a = Node("a")
 # b = Node("b")
