@@ -11,7 +11,25 @@ class Node:
         self.next = None
 
 def longestStreak(head):
-    print(head.val)
+    if head == None:
+        return 0
+
+    longest = 0
+    current = 0
+    el = head.val
+
+    while head:
+        if head.val == el:
+            current += 1
+            if current > longest:
+              longest = current
+        else:
+            el = head.val
+            current = 1
+        head = head.next
+
+    return longest
+
 
 
 # Examples:
