@@ -17,35 +17,71 @@ class Node:
         self.val = val
         self.next = None
 
+
+def linkedListValues(head):
+   result = []
+
+   while head:
+      result.append(head.val)
+      head = head.next
+
+   return result
+
+
 def mergeLists(h1, h2):
-    print(h1, h2)
+    cur = None
+    nex = None
+    head = None
+
+    if h1.val < h2.val:
+        cur = h1
+        nex = h2
+        head = cur
+    else:
+        cur = h2
+        nex = h1
+        head = cur
+
+    while cur:
+        curNext = cur.next
+        if curNext.val < nex.val:
+            cur = cur.next
+        else:
+            cur.next = nex
+            cur = nex
+            nex = curNext
+
+    return linkedListValues(head)
+
+
+
 
 # Examples:
 
 # # test_00:
-# a = Node(5);
-# b = Node(7);
-# c = Node(10);
-# d = Node(12);
-# e = Node(20);
-# f = Node(28);
-# a.next = b;
-# b.next = c;
-# c.next = d;
-# d.next = e;
-# e.next = f;
+a = Node(5);
+b = Node(7);
+c = Node(10);
+d = Node(12);
+e = Node(20);
+f = Node(28);
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+e.next = f;
 # 5 -> 7 -> 10 -> 12 -> 20 -> 28
 
-# q = Node(6);
-# r = Node(8);
-# s = Node(9);
-# t = Node(25);
-# q.next = r;
-# r.next = s;
-# s.next = t;
+q = Node(6);
+r = Node(8);
+s = Node(9);
+t = Node(25);
+q.next = r;
+r.next = s;
+s.next = t;
 # 6 -> 8 -> 9 -> 25
 
-# print(mergeLists(a, q));
+print(mergeLists(a, q));
 # 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 12 -> 20 -> 25 -> 28
 # test_01:
 a = Node(5);
