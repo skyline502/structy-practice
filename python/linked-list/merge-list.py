@@ -34,23 +34,24 @@ def mergeLists(head1, head2):
     head = None
 
     if (h1.val < h2.val):
-        head = h1
-        h1 = h1.next
+        head = h1 #head is h1
+        h1 = h1.next #reassign h1 to the next node in the list
     else:
         head = h2
         h2 = h2.next
 
-    current = head
+    current = head #another variable to track current node
 
-    while h1 != None and h2 != None:
+    while h1 != None and h2 != None: #while we have a h1 and h2 node
         if h1.val < h2.val:
-            current.next = h1
+            current.next = h1 #point the current.next pointer to this node
             h1 = h1.next
         else:
             current.next = h2
             h2 = h2.next
-        current = current.next
+        current = current.next #reassign current to its next node
 
+    #after loop, we check for left over nodes
     if h1 == None:
         current.next = h2
     else:
