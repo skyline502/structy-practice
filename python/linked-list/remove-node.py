@@ -17,8 +17,30 @@ class Node:
     self.val = val
     self.next = None
 
+def linkedListValues(head):
+   result = []
+
+   while head:
+      result.append(head.val)
+      head = head.next
+
+   return result
+
 def removeNode(head, tar):
-  print(head.val, tar)
+  if head.val == tar:
+    return linkedListValues(head.next)
+
+  prev = head
+  current = head
+
+  while current:
+    if current.val == tar:
+      next_node = current.next
+      prev.next = next_node
+
+      return linkedListValues(head)
+    prev = current
+    current = current.next
 
 
 # test_00:
@@ -39,6 +61,7 @@ e.next = f
 
 print(removeNode(a, "c"))
 # a -> b -> d -> e -> f
+
 # test_01:
 x = Node("x")
 y = Node("y")
@@ -51,6 +74,7 @@ y.next = z
 
 print(removeNode(x, "z"))
 # x -> y
+
 # test_02:
 q = Node("q")
 r = Node("r")
@@ -63,6 +87,7 @@ r.next = s
 
 print(removeNode(q, "q"))
 # r -> s
+
 # test_03:
 node1 = Node("h")
 node2 = Node("i")
@@ -77,6 +102,7 @@ node3.next = node4
 
 print(removeNode(node1, "i"))
 # h -> j -> i
+
 # test_04:
 t = Node("t")
 
