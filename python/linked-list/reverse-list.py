@@ -19,8 +19,18 @@ def linkedListValues(head):
 
    return result
 
-def reverseList(head):
-  print(head)
+#a, b, c, d
+def reverseList(head): #a
+  prev = None
+
+  while head: #a, b, c, d
+    curnext = head.next #b, c, d, None
+    head.next = prev #None, a, b, c
+    prev = head #a, b, c, d
+    head = curnext #b, c, d, None
+
+  return linkedListValues(prev)
+
 
 # Examples:
 # test_00:
