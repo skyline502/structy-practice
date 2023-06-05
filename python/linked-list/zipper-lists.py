@@ -27,80 +27,91 @@ def linked_list_values(head):
    return result
 
 def zipper_lists(head1, head2):
-  print(linked_list_values(head1), linked_list_values(head2))
+  start = head1
+  cur = start
+  nex = head2
+
+  while cur != None and nex != None:
+    cur_next = cur.next
+    cur.next = nex
+    cur = nex
+    nex = cur_next
+
+  return linked_list_values(start)
+
 
 # Examples:
 
-# test_00:
-a = Node("a");
-b = Node("b");
-c = Node("c");
-a.next = b;
-b.next = c;
-# a -> b -> c
-
-x = Node("x");
-y = Node("y");
-z = Node("z");
-x.next = y;
-y.next = z;
-# x -> y -> z
-
-print(zipper_lists(a, x));
-# a -> x -> b -> y -> c -> z
-# test_01:
+# # test_00:
 # a = Node("a");
 # b = Node("b");
 # c = Node("c");
-d = Node("d");
-e = Node("e");
-f = Node("f");
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-e.next = f;
-# a -> b -> c -> d -> e -> f
+# a.next = b;
+# b.next = c;
+# # a -> b -> c
 
 # x = Node("x");
 # y = Node("y");
 # z = Node("z");
-x.next = y;
-y.next = z;
-# x -> y -> z
+# x.next = y;
+# y.next = z;
+# # x -> y -> z
 
-print(zipper_lists(a, x));
-# a -> x -> b -> y -> c -> z -> d -> e -> f
-# test_02:
-s = Node("s");
-t = Node("t");
-s.next = t;
-# s -> t
+# print(zipper_lists(a, x));
+# # a -> x -> b -> y -> c -> z
+# # test_01:
+# # a = Node("a");
+# # b = Node("b");
+# # c = Node("c");
+# d = Node("d");
+# e = Node("e");
+# f = Node("f");
+# a.next = b;
+# b.next = c;
+# c.next = d;
+# d.next = e;
+# e.next = f;
+# # a -> b -> c -> d -> e -> f
 
-one = Node(1);
-two = Node(2);
-three = Node(3);
-four = Node(4);
-one.next = two;
-two.next = three;
-three.next = four;
-# 1 -> 2 -> 3 -> 4
+# # x = Node("x");
+# # y = Node("y");
+# # z = Node("z");
+# x.next = y;
+# y.next = z;
+# # x -> y -> z
 
-print(zipper_lists(s, one));
-# s -> 1 -> t -> 2 -> 3 -> 4
-# test_03:
-w = Node("w");
+# print(zipper_lists(a, x));
+# # a -> x -> b -> y -> c -> z -> d -> e -> f
+# # test_02:
+# s = Node("s");
+# t = Node("t");
+# s.next = t;
+# # s -> t
 
-# w
+# one = Node(1);
+# two = Node(2);
+# three = Node(3);
+# four = Node(4);
+# one.next = two;
+# two.next = three;
+# three.next = four;
+# # 1 -> 2 -> 3 -> 4
 
-one = Node(1);
-two = Node(2);
-three = Node(3);
-one.next = two;
-two.next = three;
-# 1 -> 2 -> 3
+# print(zipper_lists(s, one));
+# # s -> 1 -> t -> 2 -> 3 -> 4
+# # test_03:
+# w = Node("w");
 
-print(zipper_lists(w, one));
+# # w
+
+# one = Node(1);
+# two = Node(2);
+# three = Node(3);
+# one.next = two;
+# two.next = three;
+# # 1 -> 2 -> 3
+
+# print(zipper_lists(w, one));
 # w -> 1 -> 2 -> 3
 # test_04:
 one = Node(1);
@@ -110,8 +121,8 @@ one.next = two;
 two.next = three;
 # 1 -> 2 -> 3
 
-# w = Node("w");
-# w
+w = Node("w");
+w
 
 print(zipper_lists(one, w));
 # 1 -> w -> 2 -> 3
