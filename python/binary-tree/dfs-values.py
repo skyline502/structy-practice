@@ -1,6 +1,6 @@
 # depth first values
 
-# Write a function, depthFirstValues, that takes in the root
+# Write a function, df_values, that takes in the root
 # of a binary tree. The function should return an array containing
 # all values of the tree in depth-first order.
 
@@ -11,7 +11,20 @@ class Node:
     self.right = None
 
 def df_values(root):
-  print(root)
+  values = []
+  stack = [root]
+
+  while len(stack) > 0:
+    current = stack.pop()
+    if current == None:
+      return values
+    if current.right:
+      stack.append(current.right)
+    if current.left:
+      stack.append(current.left)
+    values.append(current.val)
+
+  return values
 
 
 # Examples:
@@ -36,15 +49,15 @@ c.right = f;
 #  / \     \
 # d   e     f
 
-print(depthFirstValues(a));
+print(df_values(a));
 #    -> ['a', 'b', 'd', 'e', 'c', 'f']
 # test_01:
-# a = Node('a');
-# b = Node('b');
-# c = Node('c');
-# d = Node('d');
-# e = Node('e');
-# f = Node('f');
+a = Node('a');
+b = Node('b');
+c = Node('c');
+d = Node('d');
+e = Node('e');
+f = Node('f');
 g = Node('g');
 
 a.left = b;
@@ -62,24 +75,24 @@ e.left = g;
 #    /
 #   g
 
-print(depthFirstValues(a));
+print(df_values(a));
 #    -> ['a', 'b', 'd', 'e', 'g', 'c', 'f']
 # test_02:
-# a = Node('a');
+o = Node('a');
 #      a
-print(depthFirstValues(a));
+print(df_values(o));
 #    -> ['a']
 # test_03:
-# a = Node('a');
-# b = Node('b');
-# c = Node('c');
-# d = Node('d');
-# e = Node('e');
+j = Node('a');
+k = Node('b');
+l = Node('c');
+m = Node('d');
+n = Node('e');
 
-a.right = b;
-b.left = c;
-c.right = d;
-d.right = e;
+j.right = k;
+k.left = l;
+l.right = m;
+m.right = n;
 
 #      a
 #       \
@@ -91,8 +104,8 @@ d.right = e;
 #         \
 #          e
 
-print(depthFirstValues(a));
+print(df_values(j));
 #    -> ['a', 'b', 'c', 'd', 'e']
 # test_04:
-print(depthFirstValues(None));
+print(df_values(None));
 #    -> []
