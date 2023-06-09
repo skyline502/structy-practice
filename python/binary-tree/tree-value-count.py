@@ -11,7 +11,27 @@ class Node:
     self.right = None
 
 def treeValueCount(root, tar):
-  print(root, tar)
+  if root == None:
+    return 0
+
+  stack = [root]
+  count = 0
+
+  while len(stack) > 0:
+    current = stack.pop()
+    left = current.left
+    right = current.right
+
+    if left:
+      stack.append(left)
+
+    if right:
+      stack.append(right)
+
+    if current.val == tar:
+      count += 1
+
+  return count
 
 # Examples:
 a = Node(12)
