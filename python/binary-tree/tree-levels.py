@@ -1,6 +1,6 @@
 # tree levels
 
-# Write a function, treeLevels, that takes in the root of a binary tree.
+# Write a function, print(treeLevels,) that takes in the root of a binary tree.
 # The function should return a 2-Dimensional array where each subarray represents
 # a level of the tree.
 
@@ -11,8 +11,32 @@ class Node:
     self.right = None
 
 def treeLevels(root):
+  if root == None:
+    return []
+
   levels = []
-  print(root.val)
+  queue = [[root, 0]]
+
+  while len(queue) > 0:
+    current = queue.pop(0)
+    # print(current[1])
+    if current == None:
+      break
+    if len(levels) <= current[1]:
+      levels.append([current[0].val])
+    else:
+      levels[current[1]].append(current[0].val)
+
+    if current[0].left:
+      level = current[1] + 1
+      queue.append([current[0].left, level])
+
+    if current[0].right:
+      level = current[1] + 1
+      queue.append([current[0].right, level])
+
+  return levels
+
 
 # Examples:
 
@@ -36,7 +60,7 @@ c.right = f
 #  / \     \
 # d   e     f
 
-treeLevels(a) # ->
+print(treeLevels(a)) # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
@@ -70,7 +94,7 @@ f.left = i
 #      / \    /
 #     g  h   i
 
-treeLevels(a) # ->
+print(treeLevels(a)) # ->
 # [
 #   ['a'],
 #   ['b', 'c'],
@@ -101,7 +125,7 @@ u.right = v
 #  /
 # v
 
-treeLevels(q) #->
+print(treeLevels(q)) #->
 # [
 #   ['q'],
 #   ['r', 's'],
@@ -110,4 +134,4 @@ treeLevels(q) #->
 #   ['v']
 # ]
 # test_03:
-treeLevels(null) # -> []
+print(treeLevels(None)) # -> []
