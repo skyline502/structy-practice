@@ -15,23 +15,26 @@ def treeLevels(root):
     return []
 
   levels = []
+
+  # [node, current level]
   queue = [[root, 0]]
 
   while len(queue) > 0:
     current = queue.pop(0)
     # print(current[1])
-    if current == None:
-      break
+    # if current == None:
+    #   break
     if len(levels) <= current[1]:
       levels.append([current[0].val])
     else:
       levels[current[1]].append(current[0].val)
 
-    if current[0].left:
+    if current[0].left != None:
+      # increment level
       level = current[1] + 1
       queue.append([current[0].left, level])
 
-    if current[0].right:
+    if current[0].right != None:
       level = current[1] + 1
       queue.append([current[0].right, level])
 
