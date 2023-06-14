@@ -3,6 +3,32 @@
 # Write a function, print(leafList,) that takes in the root of a binary tree and
 # returns an array containing the values of all leaf nodes in left-to-right order.
 
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.left = None
+    self.right = None
+
+def leafList(root):
+  if root == None:
+    return []
+  leaves = []
+  stack = [root]
+
+  while len(stack) > 0:
+    current = stack.pop()
+
+    if current.right:
+      stack.append(current.right)
+
+    if current.left:
+      stack.append(current.left)
+
+    if current.left == None and current.right == None:
+      leaves.append(current.val)
+
+  return leaves
+
 # Examples:
 # test_00:
 a = Node("a")
