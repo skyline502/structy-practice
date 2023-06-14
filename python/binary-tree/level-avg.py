@@ -10,6 +10,38 @@ class Node:
     self.left = None
     self.right = None
 
+def levelAverages(root):
+  if root == None:
+    return []
+  levels = []
+  queue = [[root, 0]]
+
+  while len(queue) > 0:
+    current = queue.pop(0)
+    node = current[0]
+    level = current[1]
+
+    if len(levels) <= level:
+      levels.append([node.val])
+    else:
+      levels[level].append(node.val)
+
+    if node.left and node.left != None:
+      queue.append([node.left, level + 1])
+
+    if node.right and node.right != None:
+      queue.append([node.right, level + 1])
+
+  level_avg = []
+
+  for arr in levels:
+    total = 0
+    for num in arr:
+      total += num
+    level_avg.append(total/len(arr))
+
+  return level_avg
+
 
 # Examples:
 
@@ -58,7 +90,7 @@ e.right = g
 # #      / \
 # #     1  3
 
-levelAverages(a) # -> [ 5, 32.5, 17.5, 2 ]
+print(levelAverages(a)) # -> [ 5, 32.5, 17.5, 2 ]
 # # test_02:
 a = Node(-1)
 b = Node(-6)
@@ -85,7 +117,7 @@ f.right = h
 # #     /       \
 # #    -1       -2
 
-levelAverages(a) # -> [ -1, -5.5, 14, -1.5 ]
+print(levelAverages(a)) # -> [ -1, -5.5, 14, -1.5 ]
 # # test_03:
 q = Node(13)
 r = Node(4)
@@ -110,6 +142,6 @@ u.right = v
 # #    /
 # #   42
 
-levelAverages(q) # -> [ 13, 3, 9, 2, 42 ]
+print(levelAverages(q)) # -> [ 13, 3, 9, 2, 42 ]
 # # test_04:
-levelAverages(None) # -> [ ]
+print(levelAverages(None)) # -> [ ]
