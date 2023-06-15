@@ -15,7 +15,32 @@ class Node:
     self.right = None
 
 def howHigh(root):
-  print(root)
+  if root == None:
+    return -1
+
+  height = 0
+  stack = [[root, 0]]
+
+  while len(stack) > 0:
+    current = stack.pop()
+
+    node = current[0]
+    level = current[1]
+
+    # print(node.val, level)
+    # print('current height', height, 'current level:', level)
+
+    if level > height:
+      # print('does it reach here...', node.val, level)
+      height = level
+
+    if node.left:
+      stack.append([node.left, level + 1])
+
+    if node.right:
+      stack.append([node.right, level + 1])
+
+  return height
 
 # test_00:
 a = Node('a')
@@ -31,11 +56,11 @@ b.left = d
 b.right = e
 c.right = f
 
-#      a
-#    /   \
-#   b     c
-#  / \     \
-# d   e     f
+# #      a
+# #    /   \
+# #   b     c
+# #  / \     \
+# # d   e     f
 
 print(howHigh(a)) # -> 2
 # test_01:
