@@ -14,13 +14,21 @@ class Node:
     self.right = None
 
 def max_path_sum(root):
-  max_sum = 0
-  current_sum = 0
+  if root == None:
+    return float('-inf')
 
-  print(root.val)
+  if root.left == None and root.right == None:
+    return root.val
+
+  left = max_path_sum(root.left)
+  right = max_path_sum(root.right)
+
+  # print('left:', left, 'right:', right)
+
+  return max(root.val + left, root.val + right)
 
 # Examples:
-# test_00:
+# # test_00:
 a = Node(3)
 b = Node(11)
 c = Node(4)
@@ -34,11 +42,11 @@ b.left = d
 b.right = e
 c.right = f
 
-#       3
-#    /    \
-#   11     4
-#  / \      \
-# 4   -2     1
+# #       3
+# #    /    \
+# #   11     4
+# #  / \      \
+# # 4   -2     1
 
 print(max_path_sum(a)) # -> 18
 # # test_01:
@@ -57,13 +65,13 @@ b.right = e
 e.left = f
 e.right = g
 
-# #        5
-# #     /    \
-# #    11    54
-# #  /   \
-# # 20   15
-# #      / \
-# #     1  3
+# # #        5
+# # #     /    \
+# # #    11    54
+# # #  /   \
+# # # 20   15
+# # #      / \
+# # #     1  3
 
 print(max_path_sum(a)) # -> 59
 # # test_02:
@@ -96,6 +104,6 @@ print(max_path_sum(a)) # -> -8
 # # test_03:
 a = Node(42)
 
-# #        42
+# # #        42
 
 print(max_path_sum(a)) # -> 42
