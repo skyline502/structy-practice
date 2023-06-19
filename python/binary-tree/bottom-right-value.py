@@ -12,7 +12,21 @@ class Node:
     self.right = None
 
 def bottomRightValue(root):
-  print(root.val)
+  queue = [root]
+  node = None
+
+  while len(queue) > 0:
+    current = queue.pop(0)
+    node = current.val
+
+    if current.left:
+      queue.append(current.left)
+
+    if current.right:
+      queue.append(current.right)
+
+  return node
+
 
 # test_00
 # :
