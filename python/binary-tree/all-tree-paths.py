@@ -14,7 +14,28 @@ class Node:
 
 def allTreePaths(root):
   paths = []
-  queue = [[root, 0]]
+  stack = [root]
+  current_path = []
+
+  while len(stack) > 0:
+    current = stack.pop()
+
+    if current.left == None and current.right == None:
+      current_path.append(current.val)
+      paths.append(current_path)
+      current_path = [root.val]
+      continue
+
+    if current.left:
+      stack.append(current.left)
+
+    if current.right:
+      stack.append(current.right)
+
+    current_path.append(current.val)
+
+  return paths
+
 
 
 # test_00:
