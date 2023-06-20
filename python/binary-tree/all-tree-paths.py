@@ -13,26 +13,22 @@ class Node:
     self.right = None
 
 def allTreePaths(root):
+  if root == None:
+    return []
+
+  if root.left == None and root.right == None:
+    return [[root.val]]
+
   paths = []
-  stack = [root]
-  current_path = []
+  left_path = allTreePaths(root.left)
 
-  while len(stack) > 0:
-    current = stack.pop()
+  for path in left_path:
+    paths.append([root.val, *path])
 
-    if current.left == None and current.right == None:
-      current_path.append(current.val)
-      paths.append(current_path)
-      current_path = [root.val]
-      continue
+  right_path = allTreePaths(root.right)
 
-    if current.left:
-      stack.append(current.left)
-
-    if current.right:
-      stack.append(current.right)
-
-    current_path.append(current.val)
+  for path in right_path:
+    paths.append([root.val, *path])
 
   return paths
 
