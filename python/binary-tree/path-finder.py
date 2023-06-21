@@ -13,23 +13,59 @@ class Node:
     self.left = None
     self.right = None
 
+# def pathFinder(root, target):
+#   if root == None:
+#     return None
+
+#   if root.val == target:
+#     return [root.val]
+
+#   left = pathFinder(root.left, target)
+#   right = pathFinder(root.right, target)
+
+#   if left != None:
+#     return [root.val, *left]
+
+#   if right != None:
+#     return [root.val, *right]
+
+#   return None
+
 def pathFinder(root, target):
-  if root == None:
+  results = findVal(root, target)
+
+  # print(results, 'results')
+
+  if results != None:
+    print('results found')
+    results.reverse()
+    return results
+  else:
     return None
 
-  if root.val == target:
-    return [root.val]
+def findVal(root, tar):
+  if root == None:
+     return None
+  # print(root.val, tar, 'line 43')
 
-  left = pathFinder(root.left, target)
-  right = pathFinder(root.right, target)
+  if root.val == tar:
+     return [root.val] #we return an array when we find the target;
 
-  if left != None:
-    return [root.val, *left]
+  left = findVal(root.left, tar) #else we continue down the nodes in search of it
+  right = findVal(root.right, tar)
 
-  if right != None:
-    return [root.val, *right]
+  # print(left, right)
 
-  return None
+  if left != None: #if it is found on the left node, we push the root val into our array
+    left.append(root.val)
+    return left
+
+  if right != None: #if it is on the right, we do the same;
+    right.append(root.val)
+    return right
+
+  return None #finally if the tar is not found we return null;
+
 
 
 # Examples:
