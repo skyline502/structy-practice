@@ -16,7 +16,21 @@ class Node:
 def pathFinder(root, target):
   if root == None:
     return None
-  print(root.val, target)
+
+  if root.val == target:
+    return [root.val]
+
+  left = pathFinder(root.left, target)
+  right = pathFinder(root.right, target)
+
+  if left != None:
+    return [root.val, *left]
+
+  if right != None:
+    return [root.val, *right]
+
+  return None
+
 
 # Examples:
 # test_00:
@@ -41,18 +55,18 @@ c.right = f
 
 print(pathFinder(a, 'e')) # -> [ 'a', 'b', 'e' ]
 # test_01:
-# a = Node("a")
-# b = Node("b")
-# c = Node("c")
-# d = Node("d")
-# e = Node("e")
-# f = Node("f")
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
 
-# a.left = b
-# a.right = c
-# b.left = d
-# b.right = e
-# c.right = f
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
 
 # #      a
 # #    /   \
@@ -60,24 +74,24 @@ print(pathFinder(a, 'e')) # -> [ 'a', 'b', 'e' ]
 # #  / \     \
 # # d   e     f
 
-# print(pathFinder(a, 'p')) # -> null
+print(pathFinder(a, 'p')) # -> None
 # # test_02:
-# a = Node("a")
-# b = Node("b")
-# c = Node("c")
-# d = Node("d")
-# e = Node("e")
-# f = Node("f")
-# g = Node("g")
-# h = Node("h")
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
+g = Node("g")
+h = Node("h")
 
-# a.left = b
-# a.right = c
-# b.left = d
-# b.right = e
-# c.right = f
-# e.left = g
-# f.right = h
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
+e.left = g
+f.right = h
 
 # #      a
 # #    /   \
@@ -87,24 +101,24 @@ print(pathFinder(a, 'e')) # -> [ 'a', 'b', 'e' ]
 # #    /       \
 # #   g         h
 
-# print(pathFinder(a, "c")) # -> ['a', 'c']
+print(pathFinder(a, "c")) # -> ['a', 'c']
 # # test_03:
-# a = Node("a")
-# b = Node("b")
-# c = Node("c")
-# d = Node("d")
-# e = Node("e")
-# f = Node("f")
-# g = Node("g")
-# h = Node("h")
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
+g = Node("g")
+h = Node("h")
 
-# a.left = b
-# a.right = c
-# b.left = d
-# b.right = e
-# c.right = f
-# e.left = g
-# f.right = h
+a.left = b
+a.right = c
+b.left = d
+b.right = e
+c.right = f
+e.left = g
+f.right = h
 
 # #      a
 # #    /   \
@@ -114,7 +128,7 @@ print(pathFinder(a, 'e')) # -> [ 'a', 'b', 'e' ]
 # #    /       \
 # #   g         h
 
-# print(pathFinder(a, "h")) # -> ['a', 'c', 'f', 'h']
+print(pathFinder(a, "h")) # -> ['a', 'c', 'f', 'h']
 # test_04:
 x = Node("x")
 
@@ -122,14 +136,14 @@ x = Node("x")
 
 print(pathFinder(x, "x")) # -> ['x']
 # test_05:
-print(pathFinder(None, "x")) # -> null
+print(pathFinder(None, "x")) # -> None
 # test_06:
-# root = Node(0)
-# let curr = root
-# for (let i = 1 i <= 6000 i += 1) {
-#   curr.right = Node(i)
-#   curr = curr.right
-# }
+root = Node(0)
+curr = root
+for i in range(6000):
+  curr.right = Node(i)
+  curr = curr.right
+
 
 # #      0
 # #       \
@@ -145,4 +159,4 @@ print(pathFinder(None, "x")) # -> null
 # #                \
 # #                6000
 
-# print(pathFinder(root, 3451)) # -> [0, 1, 2, 3, ..., 3450, 3451]
+print(pathFinder(root, 3451)) # -> [0, 1, 2, 3, ..., 3450, 3451]
