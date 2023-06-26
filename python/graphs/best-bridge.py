@@ -5,8 +5,13 @@
 # A bridge does not need to form a straight line.
 
 def bestBridge(grid):
-  print(grid, 'da grid')
+  visited = set()
+  for row, rows in enumerate(grid):
+   for col, column in enumerate(rows):
+    print(rows, column)
 
+def find_island(grid, row, col, visited):
+  print(grid, row, col, visited)
 # test_00:
 
 grid = [
