@@ -8,7 +8,7 @@ def bestBridge(grid):
   visited = set()
   for row, rows in enumerate(grid):
    for col, column in enumerate(rows):
-    print(rows, column)
+    print(row, col)
 
 def find_island(grid, row, col, visited):
   print(grid, row, col, visited)
