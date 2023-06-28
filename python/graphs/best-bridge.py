@@ -24,11 +24,8 @@ def bestBridge(grid):
 
 
 def is_inbounds(grid, row, col):
-  row_inbounds = row >= 0 and row < len(grid)
-  col_inbounds = 0 <= col and col < len(grid[0])
-
-  print(row_inbounds, 'rows', row, col)
-  print(col_inbounds, 'col', row, col)
+  row_inbounds = True if row >= 0 and row < len(grid) else False
+  col_inbounds = True if 0 <= col and col < len(grid[0]) else False
 
   return row_inbounds and col_inbounds
 
@@ -36,6 +33,7 @@ def is_inbounds(grid, row, col):
 
 def find_island(grid, row, col, visited):
   if is_inbounds(grid, row, col) == False or grid[row][col] == 'W':
+    print('not an island')
     return visited
 
   node = str(row) + ',' + str(col)
